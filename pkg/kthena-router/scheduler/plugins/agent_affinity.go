@@ -113,10 +113,6 @@ const (
 
 	// agentAffinityQueryTimeout bounds each Redis query.
 	agentAffinityQueryTimeout = 3 * time.Second
-
-	// agentAffinitySyncInterval bounds the goroutine that syncs post-score
-	// ownership back into Redis for each selected pod.
-	agentAffinityGCInterval = 30 * time.Minute
 )
 
 // AgentAffinityArgs carries the YAML-decoded plugin arguments read from
