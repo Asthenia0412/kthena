@@ -91,12 +91,12 @@ import (
 // --- Public key helpers ----------------------------------------------------
 
 const (
-	sessionPinKeyPrefix   = "matrix:agent:session:"
-	sessionBlocksSuffix   = ":blocks"
-	defaultSessionPinTTL  = 60 * time.Second
-	defaultSessionPinGC   = 5 * time.Minute
-	sessionPinTimeout     = 2 * time.Second
-	maxActiveSessions     = 100000 // safety cap; enforced on open()
+	sessionPinKeyPrefix  = "matrix:agent:session:"
+	sessionBlocksSuffix  = ":blocks"
+	defaultSessionPinTTL = 60 * time.Second
+	defaultSessionPinGC  = 5 * time.Minute
+	sessionPinTimeout    = 2 * time.Second
+	maxActiveSessions    = 100000 // safety cap; enforced on open()
 )
 
 // BuildSessionPinKey is exposed so callers (router REST API, tests) can
@@ -241,8 +241,8 @@ func (m *SessionPinningManager) Open(sessionID string, ttl time.Duration, podOwn
 	// Snapshot reads back and what metrics scrapers can aggregate.
 	metaKey := key + ":meta"
 	pipe.HSet(ctx, metaKey, map[string]interface{}{
-		"opened_at":       strconv.FormatInt(now, 10),
-		"last_heartbeat":  strconv.FormatInt(now, 10),
+		"opened_at":      strconv.FormatInt(now, 10),
+		"last_heartbeat": strconv.FormatInt(now, 10),
 	})
 	pipe.Expire(ctx, metaKey, ttl)
 

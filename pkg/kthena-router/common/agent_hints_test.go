@@ -119,9 +119,9 @@ func TestAgentHints_DefaultSessionTTL(t *testing.T) {
 
 func TestAgentHints_HasProgramAffinity(t *testing.T) {
 	tests := []struct {
-		name  string
-		h     *AgentHints
-		want  bool
+		name string
+		h    *AgentHints
+		want bool
 	}{
 		{"nil", nil, false},
 		{"empty program_id", &AgentHints{}, false},
@@ -136,9 +136,9 @@ func TestAgentHints_HasProgramAffinity(t *testing.T) {
 
 func TestAgentHints_HasSessionPinning(t *testing.T) {
 	tests := []struct {
-		name  string
-		h     *AgentHints
-		want  bool
+		name string
+		h    *AgentHints
+		want bool
 	}{
 		{"nil", nil, false},
 		{"empty session_id", &AgentHints{}, false},
@@ -282,7 +282,9 @@ func TestAgentHints_String(t *testing.T) {
 	}
 }
 
-func contains(s, sub string) bool { return len(sub) == 0 || (len(s) >= len(sub) && indexOf(s, sub) >= 0) }
+func contains(s, sub string) bool {
+	return len(sub) == 0 || (len(s) >= len(sub) && indexOf(s, sub) >= 0)
+}
 
 func indexOf(s, sub string) int {
 	for i := 0; i+len(sub) <= len(s); i++ {
